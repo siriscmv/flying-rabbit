@@ -445,14 +445,22 @@ window.addEventListener('keydown', (event) => {
         key
     } = event;
 
-    if (key === 'a') z = -50
-    else if (key === 'd') z = 50
-    else if (key === 'w') y = 50
-    else if (key === 's') y = -50
-    else if (event.shiftKey) x = 50
-    else if (event.ctrlKey) x = -50
+    let delay = 10
 
-    lastTween = TweenMax.to(mainObject.mesh.position, 3, {
+    if (key === 'a') z = -250
+    else if (key === 'd') z = 250
+    else if (key === 'w') y = 250
+    else if (key === 's') y = -250
+    else if (event.shiftKey) x = 250
+    else if (event.ctrlKey) x = -250
+    else if (key === 'r') {
+        x = 0;
+        y = 0;
+        z = 0;
+        delay = 0;
+    }
+
+    lastTween = TweenMax.to(mainObject.mesh.position, delay, {
         x,
         y,
         z,
