@@ -411,7 +411,6 @@ internals.controls.maxDistance = 250;
 }());
 
 let mainObject = new Carrot();
-let lastTween = null;
 
 (function addElements() {
 
@@ -460,7 +459,7 @@ window.addEventListener('keydown', (event) => {
         delay = 0;
     }
 
-    lastTween = TweenMax.to(mainObject.mesh.position, delay, {
+    TweenMax.to(mainObject.mesh.position, delay, {
         x,
         y,
         z,
@@ -473,14 +472,11 @@ window.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('keyup', () => {
-    if (lastTween) {
-        lastTween.kill();
-        TweenMax.to(mainObject.mesh.position, 0, {
-            x,
-            y,
-            z,
-        });
-    }
+    TweenMax.to(mainObject.mesh.position, 1, {
+        x,
+        y,
+        z,
+    });
 });
 
 internals.resizeHandler = () => {
